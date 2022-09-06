@@ -236,7 +236,7 @@ def main():
         year = entry.get('year', '')
         link = entry.get('url', '')
         ref_id = entry.get('ID')
-
+        print(ref_id)
         if ref_id not in archive_ids: # new page
             notion_add_entry(
                 title=title,
