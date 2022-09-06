@@ -201,18 +201,18 @@ def clean_str(string):
 
 
 def main():
-    println("Instantiating the parse")
+    print("Instantiating the parse")
     # instantiate the parser
     parser = bibtexparser.bparser.BibTexParser()
     parser.ignore_nonstandard_types = True
     parser.homogenize_fields = False
     parser.interpolate_strings = False
 
-    println("Opening .bib file")
+    print("Opening .bib file")
     with open(BIB_PATH) as bib_file:
         bibliography = bibtexparser.load(bib_file, parser=parser)
 
-    println("Opening archive file")
+    print("Opening archive file")
     if os.path.exists(ARCHIVE_PATH):
         with open(ARCHIVE_PATH, 'rb') as archive_file:
             archive = pickle.load(archive_file)
@@ -220,7 +220,7 @@ def main():
         archive = []
     archive_ids = [e['ID'] for e in archive]
 
-    println("Adding entries to notion")
+    print("Adding entries to notion")
     # add each entry to notion database
     update_archive = False
     for entry in reversed(bibliography.entries):
@@ -264,7 +264,7 @@ def main():
         with open(ARCHIVE_PATH, 'wb') as archive_file:
             archive = pickle.dump(bibliography.entries, archive_file)
     else:
-        println("Did not update archive")
+        print("Did not update archive")
 
 
 if __name__ == "__main__":
