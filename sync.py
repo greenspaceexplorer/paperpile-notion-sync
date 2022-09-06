@@ -139,6 +139,7 @@ def notion_update_page(
         "Authorization": f"Bearer {NOTION_TOKEN}"
     }
     response = requests.patch(url, json=payload, headers=headers)
+    print(response)
 
 
 def notion_fetch_page(ref_id):
