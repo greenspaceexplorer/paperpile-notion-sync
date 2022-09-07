@@ -233,11 +233,12 @@ def main():
         authors = entry.get('author', '')
         authors = authors.replace(' and ', '; ')
         authors = clean_str(authors)
-
+        authors = authors if len(authors) < 100 else authors[:100]
+        
         year = entry.get('year', '')
         link = entry.get('url', None)
         ref_id = entry.get('ID')
-        print(ref_id)
+
         if ref_id not in archive_ids: # new page
             notion_add_entry(
                 title=title,
